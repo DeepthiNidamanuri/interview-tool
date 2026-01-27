@@ -1,4 +1,3 @@
-####streamlit-js-eval (enables executing javascript commands directly from the streamlit ,allowing advance featuers like page refreshing  and browser interaction )
 import streamlit as st
 from openai import OpenAI
 from streamlit_js_eval import streamlit_js_eval
