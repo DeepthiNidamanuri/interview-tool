@@ -41,20 +41,21 @@ if not st.session_state.setup_complete:
    
     # Get personal information input
     st.session_state["name"] = st.text_input(label="Name", value=st.session_state["name"], placeholder="Enter your name", max_chars=40)
-    st.session_state["experience"] = st.text_area(label="Experience", value=st.session_state["experience"], placeholder="Describe your experience", max_chars=200)
+    st.session_state["experience"] = st.text_area(label="Experience", value=st.session_state["experience"], placeholder="Describe your experience", max_chars=1000)
     st.session_state["skills"] = st.text_area(label="Skills", value=st.session_state["skills"], placeholder="List your skills", max_chars=200)
 
     
     # Company and Position Section
-    st.subheader('Company and Position')
+    # st.subheader('Company and Position')
+    st.subheader('Select the level and position you are applying for')
 
     # Initialize session state for company and position information and setting default values 
     if "level" not in st.session_state:
         st.session_state["level"] = "Junior"
     if "position" not in st.session_state:
-        st.session_state["position"] = "Data Scientist"
-    if "company" not in st.session_state:
-        st.session_state["company"] = "Amazon"
+        st.session_state["position"] = "Software Engineer"
+    # if "company" not in st.session_state:
+    #     st.session_state["company"] = "Amazon"
 
     col1, col2 = st.columns(2)
     with col1:
@@ -72,11 +73,11 @@ if not st.session_state.setup_complete:
             index=("Software Engineer","Frontend Developer","Backend Developer","Data Scientist", "Data Engineer", "ML Engineer", "BI Analyst", "Financial Analyst",).index(st.session_state["position"])
         )
 
-    st.session_state["company"] = st.selectbox(
-        "Select a Company",
-        ("Amazon", "Meta", "Udemy", "365 Company", "Nestle", "LinkedIn", "Spotify"),
-        index=("Amazon", "Meta", "Udemy", "365 Company", "Nestle", "LinkedIn", "Spotify").index(st.session_state["company"])
-    )
+    # st.session_state["company"] = st.selectbox(
+    #     "Select a Company",
+    #     ("Amazon", "Meta", "Udemy", "365 Company", "Nestle", "LinkedIn", "Spotify"),
+    #     index=("Amazon", "Meta", "Udemy", "365 Company", "Nestle", "LinkedIn", "Spotify").index(st.session_state["company"])
+    # )
 
 
 
@@ -107,8 +108,8 @@ if st.session_state.setup_complete and not st.session_state.feedback_shown and n
             "role": "system",
             "content": (f"You are an HR executive that interviews an interviewee called {st.session_state['name']} "
                         f"with experience {st.session_state['experience']} and skills {st.session_state['skills']}. "
-                        f"You should interview him for the position {st.session_state['level']} {st.session_state['position']} "
-                        f"at the company {st.session_state['company']}")
+                        f"You should interview him for the position {st.session_state['level']} {st.session_state['position']} ")
+                        # f"at the company {st.session_state['company']}")
         }]
 
     # Display chat messages
