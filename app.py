@@ -68,8 +68,8 @@ if not st.session_state.setup_complete:
     with col2:
         st.session_state["position"] = st.selectbox(
             "Choose a position",
-            ("Data Scientist", "Data Engineer", "ML Engineer", "BI Analyst", "Financial Analyst"),
-            index=("Data Scientist", "Data Engineer", "ML Engineer", "BI Analyst", "Financial Analyst").index(st.session_state["position"])
+            ("Software Engineer","Frontend Developer","Backend Developer","Data Scientist", "Data Engineer", "ML Engineer", "BI Analyst", "Financial Analyst",),
+            index=("Software Engineer","Frontend Developer","Backend Developer","Data Scientist", "Data Engineer", "ML Engineer", "BI Analyst", "Financial Analyst",).index(st.session_state["position"])
         )
 
     st.session_state["company"] = st.selectbox(
